@@ -1,0 +1,103 @@
+# Create a downloadable, self-contained HTML sales page for the user's headbands.
+# We will embed the three provided images as base64 so that the page works anywhere without extra hosting steps.
+
+import base64, os, textwrap
+
+# Paths provided by the system for the uploaded images
+paths = [
+    "/mnt/data/fbcd679d-cf1d-42b7-9785-ea97f4584cd0.jpg",
+    "/mnt/data/899e4b52-85a3-42df-88bd-88cac0ff283e.jpg",
+    "/mnt/data/c4a2cbbb-d743-4f98-b038-51cb0e935226.jpg",
+]
+
+def img_to_data_uri(path):
+    with open(path, "rb") as f:
+        data = f.read()
+    b64 = base64.b64encode(data).decode("utf-8")
+    # assume JPEGs
+    return f"data:image/jpeg;base64,{b64}"
+
+data_uris = [img_to_data_uri(p) for p in paths]
+
+html = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CringeVision Christian Headbands — Buy Now</title>
+<meta name="description" content="CringeVision Christian Headbands with cross — handmade with love. $10 each. $5 shipping or FREE when you buy 2+. Pay via Cash App, Venmo, or PayPal.">
+<style>
+  :root {{ --bg:#0b0b10; --card:#ffffff; --ink:#111; --muted:#666; }}
+  * {{ box-sizing:border-box; }}
+  body {{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:var(--bg); color:#fff; }}
+  .wrap {{ max-width: 960px; margin: 0 auto; padding: 28px 16px 60px; }}
+  header {{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }}
+  .brand {{ font-size: 1.9rem; font-weight: 800; letter-spacing: .2px; }}
+  .tag {{ color:#c0c7ff; font-weight:600; }}
+  .card {{ background: var(--card); color: var(--ink); border-radius: 18px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }}
+  .gallery {{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:12px; }}
+  .gallery img {{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:14px; }}
+  .price {{ font-weight:800; font-size:1.2rem; }}
+  .pill {{ display:inline-block; background:#111; color:#fff; padding:8px 12px; border-radius:999px; font-size:.95rem; }}
+  .row {{ display:flex; gap:10px; flex-wrap:wrap; }}
+  .btn {{ background:#111; color:#fff; text-decoration:none; padding:12px 16px; border-radius:12px; font-weight:700; }}
+  .btn.secondary {{ background:#e9ecff; color:#121433; }}
+  .muted {{ color: var(--muted); }}
+  footer {{ margin-top:28px; color:#c9c9c9; font-size:.95rem; }}
+  ul {{ margin: 8px 0 0 18px; }}
+  .section-title {{ font-weight:800; letter-spacing:.2px; margin: 18px 0 8px; }}
+  .note {{ font-size:.95rem; color:#333; }}
+  .badge {{ background:#ffe6f7; color:#6d1450; padding:6px 10px; border-radius:10px; font-weight:700; }}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="flex:1 1 320px;">
+        <div class="brand">CringeVision <span class="tag">Christian Headbands ✝️</span></div>
+        <p class="muted">Handmade with love • Soft stretch fabric • Cross detail</p>
+        <div class="row" style="margin-top:8px;">
+          <span class="pill">$10 each</span>
+          <span class="pill">Shipping $5 (Buy 2+ = <strong>FREE</strong>)</span>
+        </div>
+        <div style="margin-top:14px" class="row">
+          <a class="btn" href="mailto:godisgood4yoursoul@gmail.com?subject=Order%20-%20CringeVision%20Christian%20Headband&body=Hi%2C%0A%0AI%27d%20like%20to%20order%20headbands.%0AQuantity%3A%20%0AColor%2FStyle%3A%20%0AShipping%20Address%3A%20%0A%0APayment%20method%3A%20Cash%20App%20%2F%20Venmo%20%2F%20PayPal%0A%0AThanks!">Order by Email</a>
+          <a class="btn secondary" href="#pay">See Payment Options</a>
+        </div>
+      </div>
+      <div style="flex:1 1 280px;" class="card">
+        <div class="gallery">
+          <img src="{data_uris[0]}" alt="CringeVision headband photo 1">
+          <img src="{data_uris[1]}" alt="CringeVision headband photo 2">
+          <img src="{data_uris[2]}" alt="CringeVision headband photo 3">
+        </div>
+        <p class="note">Real photos of the product.</p>
+      </div>
+    </header>
+
+    <section class="card" id="details" style="margin-top:18px;">
+      <div class="section-title">Details</div>
+      <p>High-comfort stretch • stays put during workouts and daily wear. Machine-wash cold, line dry. Custom colors available on request.</p>
+      <div class="section-title" id="pay">How to Pay</div>
+      <ul>
+        <li><strong>PayPal:</strong> send to <strong>godisgood4yoursoul@gmail.com</strong>.</li>
+        <li><strong>Cash App:</strong> send to <strong>$YourCashtag</strong> (include color + shipping address in the note).</li>
+        <li><strong>Venmo:</strong> send to <strong>@YourVenmo</strong> (include color + shipping address in the note).</li>
+      </ul>
+      <p class="note"><span class="badge">Free Shipping</span> automatically applies when you buy 2 or more in one order.</p>
+    </section>
+
+    <footer>
+      Questions? Email <a href="mailto:godisgood4yoursoul@gmail.com" style="color:#c0c7ff">godisgood4yoursoul@gmail.com</a>. 
+      You’ll get a confirmation with ship date within 24 hours.
+    </footer>
+  </div>
+</body>
+</html>
+"""
+
+out_path = "/mnt/data/CringeVision_Headbands_Link.html"
+with open(out_path, "w", encoding="utf-8") as f:
+    f.write(html)
+
+out_path
