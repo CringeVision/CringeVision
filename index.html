@@ -1,13 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Headbands Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CringeVision Headbands — Handmade, Comfortable, Built to Last</title>
+  <meta name="description" content="Handmade headbands from CringeVision. Soft, secure, all-day comfort. Custom prints & bulk available." />
+  <style>
+    :root{
+      --bg:#0f0f12; --card:#15161a; --text:#f7f7fb; --muted:#b9bcc6; --accent:#7ae0ff; --accent2:#ffd36e; --ok:#9df7a2;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#0b0c10, #121318 35%, #0b0c10); color:var(--text); font: 16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    header.site{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px);background:rgba(10,10,14,.6);border-bottom:1px solid #222;z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+    .logo{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 12deg, var(--accent), var(--accent2), #ff7ad6, var(--accent)); box-shadow:0 0 0 2px #0006}
+    .nav a.btn{padding:10px 14px;background:var(--accent);color:#00131a;border-radius:10px;font-weight:700;text-decoration:none}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;padding:28px 0}
+    .hero h1{font-size:clamp(28px,4.2vw,44px);line-height:1.05;margin:0 0 10px}
+    .hero p{color:var(--muted);margin:0 0 14px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;background:var(--accent);color:#00131a;border:none;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;text-decoration:none}
+    .btn.alt{background:#24262d;color:var(--text);border:1px solid #2f3139}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .card{background:var(--card);border:1px solid #23242b;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px #0006}
+    .card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+    .card .pad{padding:14px}
+    .title{font-weight:800}
+    .price{font-weight:900;margin-top:4px}
+    .muted{color:var(--muted)}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .kicker{display:inline-block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);font-weight:800;margin-bottom:6px}
+    .section{padding:26px 0}
+    .panel{background:#0f1015;border:1px solid #262732;border-radius:16px;padding:18px}
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    footer{padding:28px 0;color:var(--muted);border-top:1px solid #262732}
+    .tiny{font-size:.9rem}
+    .copy{user-select:all}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}}
+    @media (max-width:600px){.grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Headbands Store!</h1>
-    <p>This is my awesome headband page. Check out the styles below:</p>
-    <!-- You can add images or more content here -->
+  <header class="site">
+    <div class="wrap nav">
+      <div class="brand"><div class="logo" aria-hidden="true"></div><span>CringeVision Headbands</span></div>
+      <a class="btn" href="#shop">Shop</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <span class="kicker">Handmade • Soft • Stays Put</span>
+        <h1>Headbands that don’t pinch, slide, or give headaches.</h1>
+        <p>Premium fabric, double-stitched, and tested on real lives (school runs, gym, long shifts). Custom prints & bulk available.</p>
+        <div class="cta">
+          <a class="btn" href="#shop">Browse styles</a>
+          <a class="btn alt" href="#how-to-order">How to order</a>
+        </div>
+      </div>
+      <div class="panel">
+        <strong>Fast checkout your way</strong>
+        <p class="muted tiny">Pay with Cash App, Venmo, or email invoice—no accounts required.</p>
+        <ul class="tiny">
+          <li>Cash App: <span class="copy">$YOURCASHAPP</span></li>
+          <li>Venmo: <span class="copy">@YOURVENMO</span></li>
+          <li>Email orders: <a href="mailto:YOUREMAIL@example.com">YOUREMAIL@example.com</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="shop" class="section">
+      <h2>Featured Headbands</h2>
+      <div class="grid">
+        <!-- PRODUCT 1 -->
+        <article class="card" itemscope itemtype="https://schema.org/Product">
+          <img src="headband-sunset.jpg" alt="Knotted headband in sunset gradient" itemprop="image">
+          <div class="pad">
+            <div class="title" itemprop="name">The Sunset (Knotted)</div>
+            <div class="muted tiny" itemprop="description">Cotton blend • Knotted front • One size</div>
+            <div class="price">$25</div>
+            <div class="row">
+              <a class="btn" href="mailto:YOUREMAIL@example.com?subject=Order%20The%20Sunset%20Headband&body=Hi%20CringeVision%2C%0A%0AI%20want%20to%20order%3A%20The%20Sunset%20(Quantity%3A%201)%0AName%3A%0AShipping%20Address%3A%0APayment%20method%3A%20Cash%20App%20%2F%20Venmo%20%2F%20Other%0A%0AThanks!">Order via Email</a>
+              <a class="btn alt" href="https://cash.app/$YOURCASHAPP" target="_blank" rel="noopener">Pay Cash App</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 2 -->
+        <article class="card" itemscope itemtype="https://schema.org/Product">
+          <img src="headband-midnight.jpg" alt="Wide headband in deep midnight color" itemprop="image">
+          <div class="pad">
+            <div class="title" itemprop="name">Midnight Wide</div>
+            <div class="muted tiny" itemprop="description">Ultra-stretch • Wide fit • Sweat-friendly</div>
+            <div class="price">$22</div>
+            <div class="row">
+              <a class="btn" href="mailto:YOUREMAIL@example.com?subject=Order%20Midnight%20Wide%20Headband&body=Hi%20CringeVision%2C%0A%0AI%20want%20to%20order%3A%20Midnight%20Wide%20(Quantity%3A%201)%0AName%3A%0AShipping%20Address%3A%0APayment%20method%3A%20Cash%20App%20%2F%20Venmo%0A%0AThanks!">Order via Email</a>
+              <a class="btn alt" href="https://venmo.com/u/YOURVENMO" target="_blank" rel="noopener">Pay Venmo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 3 -->
+        <article class="card" itemscope itemtype="https://schema.org/Product">
+          <img src="headband-galaxy.jpg" alt="Galaxy print headband" itemprop="image">
+          <div class="pad">
+            <div class="title" itemprop="name">Galaxy Print</div>
+            <div class="muted tiny" itemprop="description">Limited print • Soft brushed finish</div>
+            <div class="price">$24</div>
+            <div class="row">
+              <a class="btn" href="mailto:YOUREMAIL@example.com?subject=Order%20Galaxy%20Print%20Headband&body=Hi%20CringeVision%2C%0A%0AI%20want%20to%20order%3A%20Galaxy%20Print%20(Quantity%3A%201)%0AName%3A%0AShipping%20Address%3A%0APayment%20method%3A%20Cash%20App%20%2F%20Venmo%0A%0AThanks!">Order via Email</a>
+              <a class="btn alt" href="#how-to-order">How to Order</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="how-to-order" class="section cols">
+      <div class="panel">
+        <h3>How to Order</h3>
+        <ol class="tiny">
+          <li>Click <strong>Order via Email</strong> on a product and send the pre-filled email.</li>
+          <li>Pay with <strong>Cash App</strong> <span class="copy">$YOURCASHAPP</span> or <strong>Venmo</strong> <span class="copy">@YOURVENMO</span>.</li>
+          <li>Reply to your email thread with a screenshot/last 4 of TX ID.</li>
+          <li>I ship in <strong>1–3 business days</strong>. Tracking sent to your email.</li>
+        </ol>
+      </div>
+      <div class="panel">
+        <h3>Shipping & Returns</h3>
+        <ul class="tiny">
+          <li>US shipping $4.99 • Free over $50.</li>
+          <li>Returns within 14 days unused. Buyer pays return shipping.</li>
+          <li>Bulk/custom: email <a href="mailto:YOUREMAIL@example.com">YOUREMAIL@example.com</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <h3>FAQ</h3>
+      <p class="tiny"><strong>Do they slip?</strong> We use a soft-but-grippy knit that stays put without pinching.</p>
+      <p class="tiny"><strong>Wash care?</strong> Cold wash, lay flat to dry. No bleach.</p>
+      <p class="tiny"><strong>Sizing?</strong> One size fits most adults (18.5–23.5"). Kid sizes by request.</p>
+    </section>
+
+    <section class="section panel">
+      <h3>Contact</h3>
+      <p class="tiny">Questions or custom requests? Email <a href="mailto:YOUREMAIL@example.com">YOUREMAIL@example.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap tiny">© <span id="y"></span> CringeVision. Built by hand. All rights reserved.</div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
